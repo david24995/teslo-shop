@@ -19,6 +19,7 @@ const CustomHeader = () => {
       newSearchParams.delete('query');
     } else {
       newSearchParams.set('query', query);
+      newSearchParams.set('price', 'any');
     }
     setSearchParams(newSearchParams);
   };

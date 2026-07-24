@@ -25,11 +25,15 @@ const FilterSidebar = () => {
       ? currentSizes.filter((s) => s !== size)
       : [...currentSizes, size];
 
-    setSearchParams((prev) => {
-      prev.set('page', '1');
-      prev.set('sizes', newSizes.join(','));
-      return prev;
-    });
+    searchParams.set('page', '1');
+
+    if (newSizes.length === 0) {
+      searchParams.delete('sizes');
+    } else {
+      searchParams.set('sizes', newSizes.join(','));
+    }
+
+    setSearchParams(searchParams);
   };
 
   const handlePriceChanged = (price: string) => {
